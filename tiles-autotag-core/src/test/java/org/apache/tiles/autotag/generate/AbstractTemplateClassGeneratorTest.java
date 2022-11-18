@@ -31,6 +31,7 @@ import static org.easymock.EasyMock.verify;
 import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Files;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
@@ -80,7 +81,7 @@ public class AbstractTemplateClassGeneratorTest {
         velocityEngine = createMock(VelocityEngine.class);
         generator = createMockBuilder(AbstractTemplateClassGenerator.class)
                 .withConstructor(velocityEngine).createMock();
-        directory = File.createTempFile("autotag", null);
+        directory = Files.createTempFile("autotag", null).toFile();
     }
 
     /**
